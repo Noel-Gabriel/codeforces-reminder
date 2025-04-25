@@ -1,4 +1,4 @@
-# Codeforces reminer
+# Codeforces reminder
 
 Small app to fetch upcoming Codeforces contests using their API and 
 use osascript to automatically set reminders. 
