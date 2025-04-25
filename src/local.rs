@@ -26,7 +26,7 @@ pub fn fetch_local_upcoming_contests() -> HashSet<Contest> {
     match serde_json::from_str(&contents) {
         Ok(data) => data,
         Err(e) => {
-            log_error(&format!("Failed to parse contests JSON: {}", e));
+            log_error(&format!("Failed to parse local contests JSON: {}", e));
             std::process::exit(1);
         }
     }
