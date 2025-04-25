@@ -25,10 +25,10 @@ pub fn contest_path() -> &'static PathBuf {
 /// it does not exist, but does not panic if it fails.
 fn build_contest_path() -> PathBuf {
     let data_dir = dirs::data_local_dir()
-            .expect("Could not find data dir in .local")
+            .expect("OS does not provide data dir")
             .join("codeforces-reminder");
 
-    std::fs::create_dir_all(&data_dir).expect("Failed to create data dir");
+    std::fs::create_dir_all(&data_dir).expect("Failed to create codeforces-reminder dir");
 
     let contest_path = data_dir.join(CONTEST_FILE_NAME);
 
@@ -63,10 +63,10 @@ pub fn log_file() -> &'static File {
 /// file handle. 
 fn get_log_handle() -> File {
     let state_dir = dirs::data_local_dir()
-            .expect("Could not find data dir in .local")
+            .expect("OS does not provide data dir")
             .join("codeforces-reminder");
 
-    std::fs::create_dir_all(&state_dir).expect("Failed to create data dir");
+    std::fs::create_dir_all(&state_dir).expect("Failed to create codeforces-reminder dir");
 
     let log_path = state_dir.join(LOG_FILE_NAME);
    
