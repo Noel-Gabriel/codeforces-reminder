@@ -33,10 +33,6 @@ fn main() {
     let local_contests   = fetch_local_upcoming_contests();
     let current_upcoming = fetch_current_upcoming_contests(); 
 
-    let mut local_upcoming = local_contests
-        .intersection(&current_upcoming)
-        .collect::<HashSet<&Contest>>();
-
     let new_contests = current_upcoming
         .iter()
         .filter(|contest| !local_contests.contains(contest))
