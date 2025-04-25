@@ -10,7 +10,7 @@
 //! will be removed, while new ones will set new
 //! reminders and again be saved to the local contests.
 //!
-//! Also logs errors locally to error_log.txt to facilitate monitoring 
+//! Also logs errors to error_log.txt in the same directory to facilitate monitoring 
 //! when running this binary using cron or another scheduler.
 
 mod contest;

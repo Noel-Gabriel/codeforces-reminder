@@ -11,9 +11,6 @@ const LOG_FILE_NAME: &str = "error_log.txt";
 const MAX_LOG_LINES: usize = 2000;
 
 /// Returns the path to the contests.json
-///
-/// e.g. /Users/noel/Library/Application Support/codeforces-reminder/contests.json
-/// on MacOS in my case.
 pub fn contest_path() -> &'static PathBuf {
     CONTEST_FILE_PATH.get_or_init(build_contest_path) 
 }
@@ -51,7 +48,7 @@ fn build_contest_path() -> PathBuf {
 
 /// Returns the current open handle to the log file.
 ///
-/// Log file is saved in same directory as contests.json.
+/// Log file is saved in the same directory as contests.json.
 pub fn log_file() -> &'static File {
     LOG_FILE.get_or_init(get_log_handle)
 }
