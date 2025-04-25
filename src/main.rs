@@ -2,8 +2,9 @@
 //! from Codeforces using their API and automatically set
 //! MacOS Reminders using osascript.
 //!
-//! Running the binary will search for a "contests.json" locally, 
-//! the currently saved contests and get upcoming contests through 
+//! The crate manages a contests.json and error_log.txt locally
+//! in the path defined by dirs::data_local_dir().join("codeforces-reminder")
+//! and get upcoming contests through 
 //! Codeforces's API. Finished contests (i.e. contests saved locally but 
 //! not present in the upcoming contests retrieved from Codeforces) 
 //! will be removed, while new ones will set new
@@ -14,6 +15,7 @@
 
 mod contest;
 use contest::{Contest, ContestResponse, Phase};
+mod paths;
 
 mod local;
 use local::fetch_local_upcoming_contests;
@@ -30,6 +32,10 @@ use std::collections::HashSet;
 fn main() {
     let local_contests   = fetch_local_upcoming_contests();
     let current_upcoming = fetch_current_upcoming_contests(); 
+
+    let mut local_upcoming = local_contests
+        .intersection(&current_upcoming)
+        .collect::<HashSet<&Contest>>();
 
     let new_contests = current_upcoming
         .iter()

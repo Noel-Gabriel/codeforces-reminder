@@ -5,7 +5,6 @@ use std::hash::{Hash, Hasher};
 /// Before is the only relevant phase for upcoming contests.
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
-#[allow(non_camel_case_types)]
 pub enum Phase {
     Before,
     Coding,
@@ -17,7 +16,6 @@ pub enum Phase {
 /// Struct representing a contest.
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
-#[allow(dead_code)]
 pub struct Contest {
     /// Unique contest id.
     pub id: usize,
