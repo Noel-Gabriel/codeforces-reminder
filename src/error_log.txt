@@ -1,0 +1,2 @@
+2025-04-25T07:08:22.470720+02:00: Failed to parse contests JSON: invalid type: string "hwllo", expected a sequence at line 1 column 7
+2025-04-25T07:22:38.411764+02:00: Failed to parse contests JSON: trailing comma at line 30 column 1
