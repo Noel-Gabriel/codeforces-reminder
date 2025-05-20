@@ -112,10 +112,13 @@ fn create_reminder(contest: &Contest) {
         .to_string();
 
     let apple_script = format!(
-        r#"tell application "Reminders"
-        set newReminder to make new reminder with properties {{name:"{}, id: {}", body:"{:?}"}}
-        set due date of newReminder to date "{}"
-        end tell"#, contest.name, contest.id, contest.description, time);
+        r#"
+        with timeout of 30 seconds 
+            tell application "Reminders"
+                set newReminder to make new reminder with properties {{name:"{}, id: {}", body:"{}"}}
+                set due date of newReminder to date "{}"
+            end tell
+        end timeout"#, contest.name, contest.id, contest.description.as_deref().unwrap_or(""), time);
 
     let status = Command::new("osascript")
         .arg("-e")
